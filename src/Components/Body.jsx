@@ -5,6 +5,8 @@ import Login from './Login';
 import Browse from './Browse';
 import Header from './Header';
 import Home from './Home';
+import Step1SignUp from './SignUp/Step1SignUp';
+import Step2SignUp from './SignUp/Step2SignUp';
 
 const Body = () => {
 
@@ -20,6 +22,14 @@ const Body = () => {
         {
             path: "/browse",
             element: <Browse />
+        },
+        {
+            path: "/signUpStep1",
+            element: <Step1SignUp />
+        },
+        {
+            path: "/signUpStep2",
+            element: <Step2SignUp />
         }
     ])
 

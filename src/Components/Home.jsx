@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../Redux/UserSlice';
 
 const Home = () => {
+
+    const [email, setemail] = useState('');
+
+    const dispatch = useDispatch();
+    const handler = (email) => {
+        dispatch(signIn(email));
+    }
+
     return (
         <div className='overflow-x-hidden'>
             <div className='relative'>
@@ -14,9 +24,17 @@ const Home = () => {
                 <p className='text-xl font-medium'>Ready to watch? Enter your email to create or restart your membership.</p>
             </div>
             <div className="flex gap-4 z-10 absolute top-[70%] left-[35%] text-center text-white">
-                <input className="bg-transparent font-medium border border-gray-400 py-3 px-3 w-96" type="email" placeholder="Email Address"/>
+                <input
+                    onChange={(e)=>{
+                        setemail(e.target.value);
+                    }}
+                    className="bg-transparent font-medium border border-gray-400 py-3 px-3 w-96" type="email" placeholder="Email Address"/>
                 <div className="flex flex-grow gap-4 items-center justify-center bg-red-600 hover:bg-red-700 h-full rounded-md">
-                    <button className="py-3 px-6 text-white font-bold">Get Started</button>
+                    <Link to={'/signUpStep1'}
+                        onClick={() => handler(email)}
+                    >
+                        <button className="py-3 px-6 text-white font-bold">Get Started</button>
+                    </Link>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                     <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
                     </svg>
