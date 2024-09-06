@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import useMovieTrailer from '../../hooks/useMovieTrailer';
+import Shimmer from '../Shimmer';
 
 const VideoBackground = ({id}) => {
 
@@ -9,11 +10,10 @@ const VideoBackground = ({id}) => {
     const trailer = useSelector((store) => store?.movies?.Trailer)
     const trailerId = trailer?.key
 
-    return (
+    return (trailer === null ) ? <Shimmer /> : (
         <div className='w-screen relative'>
             <div className='absolute top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-black z-20'></div>
             
-            {/* YouTube iframe content */}
             <div className='text-white w-screen relative z-10'>
                 <iframe 
                     className='w-full aspect-video border border-black border-collapse'

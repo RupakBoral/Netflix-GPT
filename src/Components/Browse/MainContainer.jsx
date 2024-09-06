@@ -2,6 +2,7 @@ import React from 'react';
 import VideoBackground from './VideoBackground';
 import VideoTitle from './VideoTitle';
 import { useSelector } from 'react-redux';
+import Shimmer from '../Shimmer';
 
 const MainContainer = () => {
 
@@ -12,7 +13,7 @@ const MainContainer = () => {
 
     const MainMovie = movie[0];
     // console.log(MainMovie);
-    const {id, title, original_title, overview, poster_path, vote_average, backdrop_path} = MainMovie;
+    const {id, title, overview, vote_average} = MainMovie;
 
     return (
         <div className='text-white box-border relative'>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const VideoTitle = ({title, overview, vote_average}) => {
     return (
-        <div className='z-20 text-white space-y-6 absolute text-opacity-85 top-[30%] pl-16 overflow-x-hidden'>
+        <div className='z-20 text-white space-y-6 absolute text-opacity-85 top-[25%] pl-16 overflow-x-hidden'>
             <section className='w-1/3 space-y-4 p-8 rounded-xl'>
                 <h1 className='text-3xl font-bold'>{title}</h1>
                 <h3 className='text-xl font-medium'>{overview}</h3>

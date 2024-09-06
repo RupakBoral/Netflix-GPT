@@ -20,7 +20,7 @@ const UpdateHeader = () => {
     }
 
     return (
-        <div className='flex z-30 bg-black gap-8 absolute right-10 top-16'>
+        <div className='flex z-30 bg-transparent gap-8 absolute right-10 top-16'>
                 <img className='w-12 h-12 cursor-pointer' src={user_logo} alt='user'/>
                 <button
                     onClick={handleSignOut}
