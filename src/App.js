@@ -1,10 +1,8 @@
 import Body from "./components/Body";
-import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="font-bold text-xl">
-      <Header />
+    <div className="text-xl bg-black overflow-x-auto">
       <Body />
     </div>
   );

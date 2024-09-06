@@ -14,13 +14,13 @@ const Login = () => {
         const mail = email?.current?._valueTracker?.getValue()
         const pass = password?.current?._valueTracker?.getValue()
         const mssg = validateForm(mail, pass);
-        console.log(mssg);
         seterrorMssg(mssg);
         if(mssg === null){
             signInWithEmailAndPassword(auth, mail, pass)
-                .then((userCredential) => {
-                    // const user = userCredential.user;
+                .then(() => {
+                    seterrorMssg('');
                 })
+                
                 .catch((error) => {
                     const errorMessage = error.message;
                     seterrorMssg(errorMessage)

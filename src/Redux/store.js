@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import UserSlice from './UserSlice'; // Adjust import name for clarity
+import UserReducer from './UserSlice'; 
+import MoviesReducer from './MovieSlice'
 
 // Configure the store
 const store = configureStore({
   reducer: {
-    userInfo: UserSlice,
+    userInfo: UserReducer,
+    movies: MoviesReducer,
   },
 })
 

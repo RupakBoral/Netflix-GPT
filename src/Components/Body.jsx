@@ -10,36 +10,46 @@ import Step2SignUp from './SignUp/Step2SignUp';
 
 const Body = () => {
 
+    const Layout = () => {
+        return(
+            <div>
+                <Header />
+                <Outlet /> 
+            </div>
+        )
+    }
+  
     const appRouter = createBrowserRouter([
         {
             path: "/",
-            element: <Home />
-        },
-        {
-            path: "/login",
-            element: <Login />
-        },
-        {
-            path: "/browse",
-            element: <Browse />
-        },
-        {
-            path: "/signUpStep1",
-            element: <Step1SignUp />
-        },
-        {
-            path: "/signUpStep2",
-            element: <Step2SignUp />
+            element: <Layout />, // Using Layout as the wrapper for pages
+            children: [
+                {
+                    path: "/",
+                    element: <Home />
+                },
+                {
+                    path: "/login",
+                    element: <Login />
+                },
+                {
+                    path: "/browse",
+                    element: <Browse />
+                },
+                {
+                    path: "/signUpStep1",
+                    element: <Step1SignUp />
+                },
+                {
+                    path: "/signUpStep2",
+                    element: <Step2SignUp />
+                }
+            ]
         }
-    ])
+    ]);
 
     return (
-        <RouterProvider router={appRouter}>
-            <div className='bg-black'>
-                <Header />
-                <Outlet />
-            </div>
-        </RouterProvider>
+        <RouterProvider router={appRouter} />
     );
 }
 

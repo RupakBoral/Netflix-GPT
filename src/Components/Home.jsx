@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signIn } from '../Redux/UserSlice';
+import { addUser } from '../redux/UserSlice';
+import { bg_home } from '../utils/constants'; 
 
 const Home = () => {
 
     const [email, setemail] = useState('');
 
     const dispatch = useDispatch();
-    const handler = (email) => {
-        dispatch(signIn(email));
+    const handler = () => {
+        dispatch(addUser(email));
     }
 
     return (
         <div className='overflow-x-hidden'>
             <div className='relative'>
-                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/36a4db5b-dec2-458a-a1c0-662fa60e7473/1115a02b-3062-4dcc-aae0-94028a0dcdff/IN-en-20240820-TRIFECTA-perspective_WEB_eeff8a6e-0384-4791-a703-31368aeac39f_large.jpg' alt='bg'/>
+                <img src={bg_home} alt='bg'/>
                 <div className="absolute inset-0 bg-black opacity-60 h-full"></div>
             </div>
             <div className='z-10 space-y-6 absolute top-[40%] left-[25%] text-center text-white'>
@@ -26,12 +27,12 @@ const Home = () => {
             <div className="flex gap-4 z-10 absolute top-[70%] left-[35%] text-center text-white">
                 <input
                     onChange={(e)=>{
-                        setemail(e.target.value);
+                        setemail(e.target.value)
                     }}
                     className="bg-transparent font-medium border border-gray-400 py-3 px-3 w-96" type="email" placeholder="Email Address"/>
                 <div className="flex flex-grow gap-4 items-center justify-center bg-red-600 hover:bg-red-700 h-full rounded-md">
                     <Link to={'/signUpStep1'}
-                        onClick={() => handler(email)}
+                        onClick={handler}
                     >
                         <button className="py-3 px-6 text-white font-bold">Get Started</button>
                     </Link>
