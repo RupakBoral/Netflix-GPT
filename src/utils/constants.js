@@ -10,5 +10,9 @@ export const API_OPTIONS = {
     }
 }
 
+export const OPENAI_KEY = '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'
+
 export const POSTER_URL = "https://image.tmdb.org/t/p/w780/"
-  
+
+export const LANGUAGE = [{identifier: 'en', name:'English'}, {identifier: 'hindi', name: 'Hindi'}, {identifier: 'jp', name: 'Japanese'}]
+

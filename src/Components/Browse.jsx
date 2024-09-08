@@ -7,6 +7,8 @@ import Shimmer from './Shimmer';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import GPTSearch from './Browse/GPTSearch';
+import { useSelector } from 'react-redux';
 
 const Browse = () => {
 
@@ -15,13 +17,19 @@ const Browse = () => {
     useTopRatedMovies()
     useUpcomingMovies()
 
+    const SearchView = useSelector((store) => store?.GPTSearch?.GPTSeachView)
+
     return (
-        <div className='w-screen h-screen bg-black'>
+        <div className='w-screen h-screen bg-black relative'>
             <UpdateHeader />
-            <Suspense fallback = {<Shimmer />}>
-                <MainContainer />
-                <SecondaryContainer />
-            </Suspense>
+            {
+                // if search view is on then show gpt search or else show main and sec container
+                (SearchView === true) ? <GPTSearch /> : 
+                    <Suspense fallback = {<Shimmer />}>
+                        <MainContainer />
+                        <SecondaryContainer />
+                    </Suspense>
+            }
         </div>
     );
 }
