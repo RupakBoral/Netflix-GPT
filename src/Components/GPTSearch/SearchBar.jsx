@@ -1,46 +1,72 @@
 import React, { useRef, useState } from 'react';
 import lang from '../../utils/langConstants';
-import { useSelector } from 'react-redux';
-import {apiKey} from '../../utils/OpenAi'
-import {baseURL} from '../../utils/OpenAi'
+import { useDispatch, useSelector } from 'react-redux';
+import { API_OPTIONS, Groq_KEY } from '../../utils/constants';
+import Error from '../Error';
+import { addMovies, addShows } from '../../redux/SearchResultSlice';
 
 const SearchBar = () => {
+  
+  const search = useRef(null);
+  const [BarPosition, setBarPosition] = useState(false)
+  const currentLang = useSelector((store) => store?.Language?.lang)
+  
+  const dispatch = useDispatch();
+  const Groq = require('groq-sdk');
+
+  const SearchResultTmdb = async (movie) => {
+    const response = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&page=1', API_OPTIONS)
+    const result = await response?.json()
+    const data = await result?.results
+    // console.log(data);
+    return data
+  }
+
+  const handleSearch = async () => {
+    if(BarPosition === false) setBarPosition(true)
+    const systemPrompt = "You are a Movie Recommendation System. Respond only in JSON. Provide an object with two keys: 'Movies' (array of atmost 5 movie names) and 'Shows' (array of at most 5 and show names)."
+    const userPrompt = await search?.current?._valueTracker?.getValue();
+
+    const groq = new Groq({apiKey: Groq_KEY,  dangerouslyAllowBrowser: true});
+
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        {
+          role: "user",
+          content: userPrompt,
+        },
+      ],
+      model: "llama3-8b-8192",
+      temperature: 0.5,
+      max_tokens: 150,
+      top_p: 1,
+      stream: false,
+      response_format: {
+        type: "json_object"
+      }
+    });
+
+    const response = Object.assign(
+      JSON.parse(chatCompletion.choices[0].message.content),
+    );
+    // console.log(response);
     
-    const [BarPosition, setBarPosition] = useState(false)
-    const currentLang = useSelector((store) => store?.Language?.lang)
-    const search = useRef(null);
+    if(response){
+      const PromiseArray = response.Movies.map((movie) => SearchResultTmdb(movie))
+      const tmdbRes = await Promise.all(PromiseArray)
+      console.log(tmdbRes);
 
-    const handleSearch = async () => {
-        setBarPosition(!BarPosition)
-        const prompt = await search?.current?._valueTracker?.getValue()
-        const { OpenAI } = require("openai");
-        const api = new OpenAI({
-            apiKey,
-            baseURL,
-            dangerouslyAllowBrowser: true ,
-          });
-        const systemPrompt = 'You are a movie and shows recommendation system. Just list the names, nothing else.'
-        const completion = await api.chat.completions.create({
-            model: "mistralai/Mistral-7B-Instruct-v0.2",
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt,
-              },
-              {
-                role: "user",
-                content: prompt,
-              },
-            ],
-            temperature: 0.7,
-            max_tokens: 256,
-          });
-        
-          const response = completion.choices[0].message.content;
-
-          console.log(response);
-          
+      dispatch(addMovies(tmdbRes))
+      // dispatch(addShows(response.Shows))
     }
+    else <Error />
+
+
+  }
 
     return (
         <div className={`w-1/2 mx-auto ${BarPosition ? 'py-[10%]' : 'py-[18%]'} transition-all duration-1000`}>

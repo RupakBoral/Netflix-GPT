@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/firebase.json
+/.firebaserc
+/.firebase
+
+/.env
+src/utils/constants.js
+src/utils/firebase.js
+/public
+
