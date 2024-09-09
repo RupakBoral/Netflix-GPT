@@ -14,4 +14,4 @@ export const POSTER_URL = "https://image.tmdb.org/t/p/w780/"
 
 export const LANGUAGE = [{identifier: 'en', name:'English'}, {identifier: 'hindi', name: 'Hindi'}, {identifier: 'jp', name: 'Japanese'}]
 
-export const Groq_KEY = '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'
+export const Groq_KEY = 'YOUR_API_KEY'
