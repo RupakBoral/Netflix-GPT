@@ -11,12 +11,12 @@ const VideoBackground = ({id}) => {
     const trailerId = trailer?.key
 
     return (trailer === null ) ? <Shimmer /> : (
-        <div className='w-screen relative'>
-            <div className='absolute top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-black z-20'></div>
+        <div className='w-full object-cover relative'>
+            <div className='absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-black z-20'></div>
             
-            <div className='text-white w-screen relative z-10'>
+            <div className='text-white w-full relative z-10'>
                 <iframe 
-                    className='w-full aspect-video border border-black border-collapse'
+                    className='w-full object-contain aspect-video border border-black border-collapse'
                     src={`https://www.youtube.com/embed/${trailerId}?controls=0&rel=0&showinfo=0&autoplay=1&mute=1&loop=1`} 
                     title="YouTube Video" 
                     referrerPolicy="strict-origin-when-cross-origin"

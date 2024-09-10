@@ -9,6 +9,7 @@ const useMovieTrailer = (id) => {
 
     const getMovieVideo = async () => {
         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, API_OPTIONS)
+        // console.log(response);
         const result = await response.json()
         const data = result.results
         const trailers = data.filter((video) => video.type === "Trailer")

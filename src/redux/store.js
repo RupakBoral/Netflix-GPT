@@ -4,6 +4,7 @@ import MoviesReducer from './MovieSlice'
 import GPTSearchReducer from './gptSlice'
 import LanguageReducer from './LanguageSlice'
 import SearchResultReducer from './SearchResultSlice';
+import GPTmodeReducer from './GPTsearch'
 
 // Configure the store
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     GPTSearch: GPTSearchReducer,
     Language: LanguageReducer,
     SearchResult: SearchResultReducer,
+    GPTmode: GPTmodeReducer,
   },
 })
 

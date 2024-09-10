@@ -36,7 +36,7 @@ const Header = () => {
                 onClick={()=>{
                     if(user) navigate('/browse')
                     else navigate('/')
-            }} className='w-44 absolute z-40 pl-14 top-6 cursor-pointer' src={logo} alt='logo' />
+            }} className='w-44 absolute z-40 pl-14 -top-2 md:top-6 cursor-pointer' src={logo} alt='logo' />
         </div>
     );
 }

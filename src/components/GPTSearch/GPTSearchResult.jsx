@@ -10,7 +10,7 @@ const GPTSearchResult = () => {
     return (
         <div className={`text-white bg-black ${moviesRes} ? -my-32: -my-28 transition-all duration-1000`}>
             {
-                moviesRes.map((movies) => <MoviesList title={movies[0].title} movies={movies}/>)
+                moviesRes.map((movies, index) => <MoviesList key={index} title={movies[0].title} movies={movies}/>)
             }
         </div>
     );
