@@ -27,9 +27,7 @@ yarn-error.log*
 /.firebase
 
 /.env
-src/utils/constants.js
 src/utils/firebase.js
 /public
 
-././src/utils/constants.js
 .firebaserc
