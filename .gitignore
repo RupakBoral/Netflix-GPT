@@ -31,3 +31,6 @@ src/utils/firebase.js
 /public
 
 .firebaserc
+
+/.src/.reportWebVitals.js
+/.src/.setupTests.js
