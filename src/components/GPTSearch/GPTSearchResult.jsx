@@ -1,19 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import MoviesList from '../Movies/MoviesList'
+import React from "react";
+import { useSelector } from "react-redux";
+import MoviesList from "../Movies/MoviesList";
 
 const GPTSearchResult = () => {
+  const moviesRes = useSelector((store) => store?.SearchResult?.movies);
+  // const showsRes = useSelector((store) => store?.SearchResult?.shows)
 
-    const moviesRes = useSelector((store) => store?.SearchResult?.movies)
-    // const showsRes = useSelector((store) => store?.SearchResult?.shows)
-
-    return (
-        <div className={`text-white bg-black ${moviesRes} ? -my-32: -my-28 transition-all duration-1000`}>
-            {
-                moviesRes.map((movies, index) => <MoviesList key={index} title={movies[0].title} movies={movies}/>)
-            }
-        </div>
-    );
-}
+  return (
+    <div
+      className={`text-white ${moviesRes} ? -my-32: -my-28 transition-all duration-1000`}
+    >
+      {moviesRes.map((movies, index) => (
+        <MoviesList key={index} title={movies[0].title} movies={movies} />
+      ))}
+    </div>
+  );
+};
 
 export default GPTSearchResult;

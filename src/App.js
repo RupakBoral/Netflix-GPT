@@ -2,7 +2,7 @@ import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="text-xl bg-black">
+    <div className="text-xl ">
       <Body />
     </div>
   );
