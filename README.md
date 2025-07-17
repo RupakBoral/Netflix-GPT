@@ -33,8 +33,6 @@ Other Tools
 
     React Router
 
-    Vite (for fast bundling and development)
-
     Git & GitHub
 
     Firebase
