@@ -1,4 +1,6 @@
-<img width="1830" height="948" alt="image" src="https://github.com/user-attachments/assets/b1beb512-3586-4823-a60c-5709bde3def2" />🎬 Netflix-GPT – AI-Powered Movie Recommendation Platform
+🎬 Netflix-GPT – AI-Powered Movie Recommendation Platform
+
+<img width="1830" height="948" alt="image" src="https://github.com/user-attachments/assets/b1beb512-3586-4823-a60c-5709bde3def2" />
 
 Netflix-GPT is a movie and show recommendation platform that leverages the power of Generative AI (GPT) to suggest content based on user prompts.
 
