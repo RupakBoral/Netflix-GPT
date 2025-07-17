@@ -18,7 +18,6 @@ const MovieDesc = () => {
         API_OPTIONS
       );
       const data = await res.json();
-      console.log(data);
       setMovieData(data);
       setError(null);
     } catch (err) {
