@@ -16,7 +16,6 @@ Netflix-GPT is a movie and show recommendation platform that leverages the power
 
     🔍 Prompt-Based Discovery – Search beyond titles using moods, genres, characters, or scenes
 
-    🌗 Light & Dark Theme – Easily toggle between themes for visual comfort
 
 🛠️ Tech Stack
 Frontend
